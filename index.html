@@ -680,6 +680,154 @@
 </form>
 </div>
 </div>
+<!-- Floating SMS Widget Container -->
+<div class="sms-widget-container">
+  
+  <!-- Pop-up Speech Card -->
+  <div class="chat-popup" id="chatPopup">
+    <button class="close-btn" onclick="document.getElementById('chatPopup').style.display='none'" aria-label="Close chat popup">&times;</button>
+    <a href="sms:+16313382048?body=Hi%20BIC!%20Quick%20question..." class="popup-content">
+      <img src="https://lh3.googleusercontent.com/d/1YN98NS8ZXhQ-x367XTPQKLcUVfgvRCqg" alt="Avatar" class="avatar">
+      <p class="message-text">
+        Shoot me any questions and I will get back to you within 30 minutes with all the answers! (I promise)
+      </p>
+    </a>
+  </div>
+
+<!-- iMessage Floating Trigger Button -->
+<a href="sms:+16313382048?body=Hey%20BIC.%20Quick%20question%20for%20you..." class="imessage-btn" aria-label="Text us">
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Inner Speech Bubble with subtle gradient overlay -->
+    <defs>
+      <linearGradient id="bubbleGradient" x1="50" y1="20" x2="50" y2="80" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="100%" stop-color="#e2fbe8" />
+      </linearGradient>
+    </defs>
+    <path 
+      d="M50 20C31.2222 20 16 33.155 16 49.382C16 58.7408 21.0506 66.9741 28.9882 72.3333C27.5312 77.2023 23.8687 81.6033 20.2173 83.8445C19.6896 84.1683 20.0898 84.9754 20.7029 84.8872C28.2612 83.7997 34.6938 80.0076 38.6477 76.9922C42.2345 78.1406 46.0366 78.764 50 78.764C68.7778 78.764 84 65.609 84 49.382C84 33.155 68.7778 20 50 20Z" 
+      fill="url(#bubbleGradient)" 
+    />
+  </svg>
+</a>
+
+</div>
+
+<style>
+  /* Fixed Container (Bottom Right) */
+  .sms-widget-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+ /* Pop-up Card Styling */
+.chat-popup {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 14px;
+  /* Right padding increased to 28px so text stops before hitting the X */
+  padding: 16px 28px 16px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  width: 280px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+/* Speech Bubble Arrow pointing to the circle */
+.chat-popup::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  right: 24px;
+  border-width: 9px 9px 0;
+  border-style: solid;
+  border-color: #ffffff transparent;
+  display: block;
+  width: 0;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.05));
+}
+
+/* Inside Content Layout */
+.popup-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.message-text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  color: #374151;
+}
+
+  /* iMessage App Icon Replica */
+  .imessage-btn {
+    width: 60px;
+    height: 60px;
+    /* Apple Squircle Radius & Signature Green Gradient */
+    border-radius: 14px;
+    background: linear-gradient(180deg, #62e554 0%, #34c759 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Outer drop shadow + subtle top inner highlight */
+    box-shadow: 
+      0 4px 14px rgba(52, 199, 89, 0.4),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+    transition: transform 0.2s ease, filter 0.2s ease;
+    text-decoration: none;
+  }
+
+  .imessage-btn:hover {
+    transform: scale(1.06);
+    filter: brightness(1.03);
+  }
+
+  .imessage-btn svg {
+    width: 50px;
+    height: 50px;
+    /* Soft drop shadow beneath the white bubble inside the icon */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  }
+</style>
 <!-- JAVASCRIPT LOGIC FOR CALCULATOR & MODAL -->
 <script>
     let currentSector = 'construction';
