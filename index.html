@@ -686,7 +686,7 @@
   <!-- Pop-up Speech Card -->
   <div class="chat-popup" id="chatPopup">
     <button class="close-btn" onclick="document.getElementById('chatPopup').style.display='none'" aria-label="Close chat popup">&times;</button>
-    <a href="sms:+16313382048?body=Hi%20BIC!%20Quick%20question..." class="popup-content">
+    <a href="sms:+16313382048?body=Hi%20Lendesto!%20Quick%20question..." class="popup-content">
       <img src="https://lh3.googleusercontent.com/d/1YN98NS8ZXhQ-x367XTPQKLcUVfgvRCqg" alt="Avatar" class="avatar">
       <p class="message-text">
         Shoot me any questions and I will get back to you within 30 minutes with all the answers! (I promise)
@@ -695,7 +695,7 @@
   </div>
 
 <!-- iMessage Floating Trigger Button -->
-<a href="sms:+16313382048?body=Hey%20BIC.%20Quick%20question%20for%20you..." class="imessage-btn" aria-label="Text us">
+<a href="sms:+16313382048?body=Hi%20Lendesto!%20Quick%20question..." class="imessage-btn" aria-label="Text us">
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Inner Speech Bubble with subtle gradient overlay -->
     <defs>
@@ -714,30 +714,47 @@
 </div>
 
 <style>
-  /* Fixed Container (Bottom Right) */
-  .sms-widget-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
+ /* Fixed Container (Bottom Right) */
+.sms-widget-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
- /* Pop-up Card Styling */
+/* Pop-up Card Styling with Attention Pulse */
 .chat-popup {
   position: relative;
   background-color: #ffffff;
   border-radius: 14px;
-  /* Right padding increased to 28px so text stops before hitting the X */
   padding: 16px 28px 16px 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   width: 280px;
   margin-bottom: 14px;
   border: 1px solid #e5e7eb;
   box-sizing: border-box;
+  /* Smooth continuous pulse effect */
+  animation: popupPulse 2.5s infinite ease-in-out;
+}
+
+/* Keyframes for Pop-up Card Glow & Lift */
+@keyframes popupPulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(52, 199, 89, 0.35); /* Subtle green accent glow */
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Speech Bubble Arrow pointing to the circle */
@@ -798,35 +815,47 @@
   color: #374151;
 }
 
-  /* iMessage App Icon Replica */
-  .imessage-btn {
-    width: 60px;
-    height: 60px;
-    /* Apple Squircle Radius & Signature Green Gradient */
-    border-radius: 14px;
-    background: linear-gradient(180deg, #62e554 0%, #34c759 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Outer drop shadow + subtle top inner highlight */
-    box-shadow: 
-      0 4px 14px rgba(52, 199, 89, 0.4),
-      inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
-    transition: transform 0.2s ease, filter 0.2s ease;
-    text-decoration: none;
-  }
+/* iMessage App Icon Replica */
+.imessage-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #62e554 0%, #34c759 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 14px rgba(52, 199, 89, 0.4),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+  /* Pulsing green ring around the button */
+  animation: buttonPulse 2s infinite;
+}
 
-  .imessage-btn:hover {
-    transform: scale(1.06);
-    filter: brightness(1.03);
+/* Keyframes for Pulsing Button Outer Ring */
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.6), inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
   }
+  70% {
+    box-shadow: 0 0 0 14px rgba(52, 199, 89, 0), inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0), inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+  }
+}
 
-  .imessage-btn svg {
-    width: 50px;
-    height: 50px;
-    /* Soft drop shadow beneath the white bubble inside the icon */
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
-  }
+.imessage-btn:hover {
+  transform: scale(1.06);
+  filter: brightness(1.03);
+}
+
+.imessage-btn svg {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+}
 </style>
 <!-- JAVASCRIPT LOGIC FOR CALCULATOR & MODAL -->
 <script>
